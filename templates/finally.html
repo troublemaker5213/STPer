@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo3.ico' %}" type="image/x-icon">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'icomoon/style.css' %}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+            /* user-select: none; */
+            text-decoration: none;
+            color: #000;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .mainbody {
+            width: 100%;
+        }
+
+        .main {
+            position: relative;
+            width: 1260px;
+            height: 650px;
+            margin: 0 auto;
+
+            background: url(/static/images/2.jpg) no-repeat scroll top center rgb(3, 24, 43);
+            background-position: -60px 0px;
+            background-size: 1260px 700px;
+
+        }
+
+        .main .pic {
+            z-index: 100;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+
+        }
+
+        .main .pic2 {
+            z-index: 100;
+            position: absolute;
+            left: 50px;
+            top: 600px;
+            width: 60px;
+            height: 600px;
+            overflow: hidden;
+            /* transform: rotate(180deg); */
+
+        }
+
+        .main .text {
+            z-index: 99;
+            position: absolute;
+            left: 240px;
+            top: 100px;
+        }
+
+        .main .text .top h1 {
+            font-size: 50px;
+            color: rgb(232, 240, 240);
+            letter-spacing: 5px;
+
+        }
+
+        .main .text .top p {
+            width: 100%;
+            margin-top: 40px;
+            font-size: 40px;
+            color: rgb(120, 122, 122);
+            font-family: KaiTi;
+        }
+
+
+
+        .bar6 input {
+            float: left;
+            height: 46px;
+            width: 300px;
+            margin-top: 40px;
+            padding-left: 20px;
+
+            border: 2px solid #e4e1e1;
+            border-radius: 10px 0 0 10px;
+            background: #e4e1e1;
+        }
+
+        .bar6 input::placeholder {
+            font-size: 16px;
+            line-height: 46px;
+        }
+
+        .bar6 button {
+            float: left;
+            height: 50px;
+            width: 250px;
+            margin-top: 40px;
+            margin-left: 0;
+            border: 2px solid rgb(118, 62, 198);
+            background: rgb(118, 62, 198);
+            border-radius: 0 10px 10px 0;
+
+        }
+
+        .bar6 button:before {
+            content: "Sign up for Github";
+            font-size: 20px;
+            color: #F9F0DA;
+        }
+
+       .enter  button {
+            float: left;
+            height: 50px;
+            width: 180px;
+            margin-top: 60px;
+            margin-left: 500px;
+            border: 2px solid rgb(0, 199, 194);
+            background: transparent;
+            border-radius: 10px 10px 10px 10px;
+            color: rgb(0, 199, 194);
+            font-size: 20px;
+        }
+
+        .main .text .bottom p {
+            font-size: 20px;
+            color: white;
+            float: left;
+            margin-top: 280px;
+            margin-left: -300px;
+            font-family: KaiTi
+        }
+
+        /* .main .text .bottom .p21 {
+          
+            float: left;
+            font-size: 20px;
+            color: rgb(184, 180, 180);
+            float: left;
+            margin-top: 180px;
+            margin-left: 500px;
+            font-family: KaiTi;
+        } */
+
+        .main .text .bottom .p22 {
+            font-size: 20px;
+            color: rgb(184, 180, 180);
+            float: left;
+            margin-top: 220px;
+            margin-left: 460px;
+            font-family: KaiTi;
+            /* margin-left: -0px; */
+        }
+
+
+        .logovideo {
+            float: left;
+            margin-top: 150px;
+            margin-left: -140px;
+            width: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .main .thelast {
+            float: left;
+            margin-top: 60px;
+            margin-left: 300px;
+        }
+        .main .thelast p {
+            color: rgb(111, 121, 141);
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            line-height: 20px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="mainbody">
+        <div class="main">
+            <canvas id="stars"></canvas>
+
+
+            <div class="text">
+                <div class="top">
+                    <h1>加密算法安全性自动化评估平台</h1>
+                </div>
+
+
+                <!-- <div class="search bar6">
+                        <input type="text" placeholder="Email address">
+                        <button type="submit"></button>
+                </div> -->
+
+                <div class="enter">
+                    <a href="{% url 'input' %}"><button > 请进入 >> </button></a>
+
+                </div>
+                <div class="bottom">
+                    <video autoplay="autoplay" loop="loop" id="video" class="logovideo" x-webkit-airplay="true" webkit-playsinline="true" muted="">
+                        <!-- {% load static %}
+                <img src="{% static 'images/logo2.png' %}"> -->
+                {% load static %}
+                        <source src="{% static 'images/logo.mp4' %}" type="video/mp4">
+                    </video>
+                    <!-- <p class="p21">指导老师：崔婷婷</p> -->
+                    <p class="p22">团队成员：何梦妮 翁天翎 张睿琦</p>
+
+                </div>
+                <div class="thelast">
+                    <p>知识产权归CAT3团队</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    var starCount = 1500;
+    var starArr = new Array();
+
+    var Star = function () {
+        this.x = windowWidth * Math.random();
+        this.y = 5000 * Math.random();
+        this.text = ".";
+        this.color = "white";
+        this.randomColor = function () {
+            var _r = Math.random();
+            if (_r < 0.5) {
+                this.color = "#333";
+            } else {
+                this.color = "white";
+            }
+        }
+    }
+
+    window.onload = function () {
+        var starsE = document.getElementById("stars");
+        windowWidth = window.innerWidth;
+        starsE.width = windowWidth;
+        starsE.height = 1 * window.innerHeight;
+        context = starsE.getContext("2d");
+
+        for (var i = 0; i < starCount; i++) {
+            var star = new Star();
+            star.randomColor();
+            starArr.push(star);
+        }
+
+        showStars();
+    }
+
+    function showStars() {
+        for (var n = 0; n < starCount; n++) {
+            starArr[n].randomColor();
+            context.fillStyle = starArr[n].color;
+            context.fillText(starArr[n].text, starArr[n].x, starArr[n].y);
+        }
+
+        setTimeout("showStars()", 100);
+    }
+</script>
+
+
+
+</html>

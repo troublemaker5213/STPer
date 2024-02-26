@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo3.ico' %}" type="image/x-icon">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'icomoon/style.css' %}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+            /* user-select: none; */
+            text-decoration: none;
+            color: #000;
+        }
+
+        .icomoon {
+            font-family: 'icomoon';
+            /* margin-top: 20px; */
+            font-size: 18px;
+            color: rgb(217, 69, 160);
+        }
+
+        .unsame {
+            float: left;
+            margin-top: 20px;
+
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .mainbody {
+            width: 100%;
+        }
+
+        .main {
+            position: relative;
+            width: 1260px;
+            height: 1200px;
+            margin: 0 auto;
+            background-color: rgb(4, 13, 33);
+
+            background: url(/static/images/2.jpg) no-repeat scroll top center rgb(3, 24, 43);
+            /* background-position: -50px -150px; */
+            background-size: 1260px 700px;
+            background-attachment: fixed;
+            /* opacity:0.2;   */
+            /* height: 200px; */
+        }
+
+        .main .toplogo {
+            position: absolute;
+            z-index: 100;
+            top: 80px;
+            left: 650px;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            /* box-shadow: 0 0 50px 30px #853030 inset; */
+        }
+
+        /* .main .toplogo:after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            box-shadow: 0 0 30px 30px rgb(87, 107, 131) ;
+        } */
+
+        .main .toplogo img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .main .box {
+            position: absolute;
+            top: 200px;
+            bottom: 200px;
+            left: 280px;
+            /* margin: 0 auto; */
+            width: 600px;
+            height: 890px;
+            padding-top: 30px;
+            padding-left: 50px;
+            background-color: rgb(12, 22, 45, 0.9);
+            border: 0.5px solid rgb(32, 38, 55);
+            border-radius: 10px 10px 10px 10px;
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+        }
+
+        .main .box .every {
+            visibility: hidden;
+        }
+
+        .main .box .welcome {
+            margin-bottom: 40px;
+        }
+
+        .main .box .top {
+            color: rgb(186, 192, 204);
+            font-size: 18px;
+            line-height: 28px;
+            letter-spacing: 0.8px;
+            /* font-family:Verdana, Geneva, Tahoma, sans-serif */
+            font-family: KaiTi
+        }
+
+        .main .box .title {
+            margin-top: 10px;
+            Font-weight: 600;
+            color: rgb(0, 199, 194);
+            line-height: 30px;
+            /* letter-spacing: 1px; */
+        }
+
+        .main .box .titletwo {
+            margin-top: 50px;
+        }
+
+
+        .main .box .input {
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 400px;
+            height: 20px;
+            background-color: transparent;
+            border: 0px;
+            color: white;
+            letter-spacing: 1px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .main .box .select {
+            margin-top: 10px;
+            /* margin-left: 10px; */
+            width: 410px;
+            height: 20px;
+            background-color: transparent;
+            border: 0px;
+            color: white;
+            letter-spacing: 1px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .main .box .select input {
+            float: left;
+            /* margin-left: 10px; */
+            margin-right: 4px;
+            margin-top: 12px;
+        }
+
+        .main .box .select p {
+            float: left;
+            margin-top: 9px;
+            width: 120px;
+            height: 24px;
+            color: white;
+            letter-spacing: 1px;
+            font-family: 'Times New Roman', Times, serif
+        }
+
+        .main .box .matrix {
+            height: 250px;
+            width: 520px;
+            resize: none;
+        }
+
+        .main .box .submit {
+            float: left;
+            margin-top: 30px;
+            margin-left: 20px;
+            height: 40px;
+            width: 250px;
+            border: 0.5px solid rgb(98, 117, 151);
+            border-radius: 5px 5px 5px 5px;
+            background-color: transparent;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+
+            /* margin: 20px 160px 20px 160px ; */
+
+        }
+
+        .main .box .submit:hover {
+            border: 2px solid rgb(118, 62, 198);
+        }
+
+        .main .bottom {
+            position: absolute;
+            top: 1160px;
+            bottom: 200px;
+            left: 540px;
+            width: 650px;
+
+        }
+
+        .main .bottom p {
+            color: rgb(91, 109, 142);
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            line-height: 20px;
+            /* color: rgb(0, 255, 0); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainbody">
+        <div class="main">
+            <canvas id="stars"></canvas>
+            <div class="toplogo">
+                {% load static %}
+                <img src="{% static 'images/logo2.png' %}">
+                <!-- <img src="/srcs/logo2.png"> -->
+            </div>
+            <div class="box">
+                <div class="welcome">
+                    <p class="top" id="number1">
+                        <!-- Welcome to GitHub! -->
+                    </p>
+                    <!-- <div style="display:none" id="wordbyword">Welcome to GitHub! </div> -->
+                    <p class="top" id="number2">
+                        <!-- Let's begin the adventure -->
+                    </p>
+                </div>
+
+
+                <form action="result/" method="POST" target="_self" id="analyse_form">
+                    {% csrf_token %}
+                    <!-- <input type="hidden" name="submit-button" value="disabled" disabled> -->
+                    <div class="every">
+
+                        <p class="title">
+                            请选择结构
+                        </p>
+                        <!-- <i class="icomoon">  </i>
+                    <input class="input"> -->
+                        <div class="select">
+
+                            <div class="up">
+
+
+                                <input type="radio" value="Feistel" name="struct" checked="checked">
+                                <p>Feistel</p>
+                                <input type="radio" value="SPN" name="struct">
+                                <p>SPN</p>
+                                <input type="radio" value="SIMON-Like" name="struct">
+                                <p>SIMON-Like</p>
+                            </div>
+                            <div class="down">
+
+
+                                <input type="radio" value="SPECK-Like" name="struct">
+                                <p>SPECK-Like</p>
+                                <input type="radio" value="广义Feistal" name="struct">
+                                <p>广义Feistel</p>
+                                <input type="radio" value="非平衡Feistal" name="struct">
+                                <p>非平衡Feistel</p>
+                            </div>
+                        </div>
+
+
+
+                        <p class="title titletwo">
+                            请输入分组长度
+                        </p>
+                        <i class="icomoon">  </i>
+                        <input class="input" name="block_length" type="text">
+                        <p class="title">
+                            请输入轮数
+                        </p>
+                        <i class="icomoon">  </i>
+                        <input class="input" name="round" type="text">
+                        <p class="title">
+                            请输入S盒大小
+                        </p>
+                        <i class="icomoon">  </i>
+                        <input class="input S_length" name="Sbox_length" type="text">
+                        <p class="title">
+                            请输入S盒内容
+                        </p>
+                        <i class="icomoon Sbox_icomoon">  </i>
+                        <input class="input S_context" name="Sbox_content" type="text">
+                        <p class="title">
+                            请输入线性矩阵
+                        </p>
+                        <div class="unsame"><i class="icomoon last_icomoon">  </i></div>
+                        <textarea class="input matrix" type="text" name="linear_matrix"></textarea>
+
+                        <button type="button" onclick="resetForm()" class="submit">Reset</button>
+                        <button type="submit" class="submit" onclick="openProgressPage()">Analyse</button>
+                </form>
+            </div>
+        </div>
+        <div class="bottom">
+            <p>
+                知识产权归CAT3团队
+            </p>
+        </div>
+
+    </div>
+
+    </div>
+</body>
+
+<script>
+
+    //star效果
+    var starCount = 3000;
+    var starArr = new Array();
+
+    var Star = function () {
+        this.x = windowWidth * Math.random();
+        this.y = 5000 * Math.random();
+        this.text = ".";
+        this.color = "white";
+        this.randomColor = function () {
+            var _r = Math.random();
+            if (_r < 0.5) {
+                this.color = "#333";
+            } else {
+                this.color = "white";
+            }
+        }
+    }
+
+    window.onload = function () {
+        var starsE = document.getElementById("stars");
+        windowWidth = window.innerWidth;
+        starsE.width = windowWidth;
+        starsE.height = 1.7 * window.innerHeight;
+        context = starsE.getContext("2d");
+
+        for (var i = 0; i < starCount; i++) {
+            var star = new Star();
+            star.randomColor();
+            starArr.push(star);
+        }
+
+        showStars();
+    }
+
+    function showStars() {
+        for (var n = 0; n < starCount; n++) {
+            starArr[n].randomColor();
+            context.fillStyle = starArr[n].color;
+            context.fillText(starArr[n].text, starArr[n].x, starArr[n].y);
+        }
+
+        setTimeout("showStars()", 100);
+    }
+
+    //头部逐字输入
+    var index1 = 0;
+    var index2 = 0;
+    var word1 = '欢迎来到算法安全性自动化评估平台 '
+    var word2 = '请输入以下参数以开始您的分析'
+    timerun = 0
+    timerun2 = 0
+    var out1 = setInterval(function type1() {
+        document.getElementById("number1").innerText = word1.substring(0, index1++);
+        timerun = timerun + 1
+
+        if (timerun >= 30) {
+            clearInterval(out1);
+        }
+    }, 100)
+    var out2 = setInterval(function type2() {
+        if (timerun <= 20) {
+            timerun2 = timerun2 + 1
+        }
+        else {
+            document.getElementById("number2").innerText = word2.substring(0, index2++);
+            timerun2 = timerun2 + 1
+        }
+        if (timerun >= 50) {
+            clearInterval(out2);
+        }
+    }, 100)
+
+
+    // 下面的input和i标签最后才出现 4000
+    setTimeout(function () {
+        var a = document.querySelector(".every")
+        a.style.visibility = "visible";
+    }, 4500)
+
+
+
+
+    //input框判断条件
+
+    var inputs = document.querySelectorAll(".input");
+    var icons = document.querySelectorAll(".icomoon");
+
+    for (var i = 0; i < inputs.length - 2; i++) {
+        (function (index) {
+            inputs[index].addEventListener("input", function () {
+                if (!isNaN(this.value)) {
+                    icons[index].textContent = '';
+                    icons[index].style.color = 'rgb(0,255,0)'
+                }
+                else {
+                    icons[index].textContent = '';
+                    icons[index].style.color = 'red'
+                }
+            });
+        })(i);
+    }
+
+    //S盒判断
+    function isValidSBoxInput(inputStr, sBoxSize) {
+        // 检查输入字符串是否是数字，并用空格分隔
+        const inputArr = inputStr.trim().split(/\s+/);
+        if (inputArr.length !== sBoxSize) {
+            console.log("1", inputArr.length)
+            console.log("2", sBoxSize)
+            return false;
+        }
+
+        // 检查每个数字是否在0-15之间
+        for (let i = 0; i < sBoxSize; i++) {
+            const num = parseInt(inputArr[i]);
+            if (isNaN(num) || num < 0 || num > 15) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    var S_length = document.querySelector(".S_length");
+    var S_context = document.querySelector(".S_context");
+    var Sbox_icomoon = document.querySelector(".Sbox_icomoon");
+
+
+    S_context.addEventListener("input", function () {
+        if (isValidSBoxInput(this.value, Math.pow(2, S_length.value))) {
+            Sbox_icomoon.textContent = '';
+            Sbox_icomoon.style.color = 'rgb(0,255,0)'
+        }
+        else {
+            Sbox_icomoon.textContent = '';
+            Sbox_icomoon.style.color = 'red'
+        }
+
+    });
+
+
+
+    //线性矩阵的判断
+    function isBinaryInput(input) {
+        const rows = input.value.trim().split('\n');
+        for (const row of rows) {
+            const nums = row.trim().split(' ');
+            if (nums.some(num => num !== '0' && num !== '1')) {
+                return false;
+            }
+            if (nums.reduce((acc, num) => acc + parseInt(num), 0) !== 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    var last_icomoon = document.querySelector(".last_icomoon");
+    var matrix = document.querySelector(".matrix");
+    matrix.addEventListener("input", function () {
+        console.log(this.value)
+        if (isBinaryInput(this)) {
+            last_icomoon.textContent = '';
+            last_icomoon.style.color = 'rgb(0,255,0)'
+        }
+        else {
+            last_icomoon.textContent = '';
+            last_icomoon.style.color = 'red'
+        }
+
+    });
+
+
+
+    //点击reset之后重置所有值
+    function resetForm() {
+        const form = document.querySelector('.every');
+        // const inputs = form.getElementsByTagName('input');
+        const textareas = form.querySelector('.matrix');
+
+        // 将所有 input 元素的值重置为初始值
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].value = ' ';
+            icons[i].textContent = '';
+            icons[i].style.color = 'rgb(217, 69, 160)'
+        }
+        textareas.value = '';
+    }
+
+
+    //点击之后跳转分析
+
+
+    function openProgressPage() {
+        event.preventDefault();
+        var form = document.querySelector('#analyse_form');
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/progress/');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // store form data in sessionStorage
+                sessionStorage.setItem('form_data', JSON.stringify(new FormData(form)));
+                alert(JSON.parse(sessionStorage.getItem('form_data')))
+                // redirect to progress page
+                window.location.href = '/progress/';
+            } else {
+                // handle error
+            }
+        };
+        xhr.send(new FormData(form));
+        return false;
+    }
+
+
+
+
+</script>
+
+</html>

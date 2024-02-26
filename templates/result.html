@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>result</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo4.ico' %}" type="image/x-icon">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'icomoon/style.css' %}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+            /* user-select: none; */
+            text-decoration: none;
+            color: #000;
+        }
+
+        .icomoon {
+            font-family: 'icomoon';
+            /* margin-top: 20px; */
+            font-size: 18px;
+            color: rgb(217, 69, 160);
+        }
+
+        .unsame {
+            float: left;
+            margin-top: 20px;
+
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .mainbody {
+            width: 100%;
+        }
+
+        .main {
+            position: relative;
+            width: 1260px;
+            height: 940px;
+            margin: 0 auto;
+            background-color: rgb(4, 13, 33);
+
+            background: url(/static/images/2.jpg) no-repeat scroll top center rgb(3, 24, 43);
+            /* background-position: -50px -150px; */
+            background-size: 1260px 700px;
+            background-attachment: fixed;
+            /* opacity:0.2;   */
+            /* height: 200px; */
+        }
+
+        .main .toplogo {
+            position: absolute;
+            z-index: 100;
+            top: 80px;
+            left: 650px;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            /* box-shadow: 0 0 50px 30px #853030 inset; */
+        }
+
+        .main .toplogo img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .main .box {
+            position: absolute;
+            top: 200px;
+            bottom: 200px;
+            left: 280px;
+            /* margin: 0 auto; */
+            width: 600px;
+            height: 620px;
+            padding-top: 30px;
+            padding-left: 50px;
+            background-color: rgb(12, 22, 45, 0.9);
+            border: 0.5px solid rgb(32, 38, 55);
+            border-radius: 10px 10px 10px 10px;
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+        }
+
+        .main .box .welcome {
+            margin-bottom: 40px;
+        }
+
+        .main .box .top {
+            color: rgb(0, 199, 194);
+            Font-weight: 600;
+            line-height: 30px;
+            /* line-height: 28px; */
+            /* letter-spacing: 0.8px; */
+        }
+
+        .main .resultbox {
+            width: 480px;
+            height: 400px;
+            margin-left: 30px;
+            border: solid 1px #000;
+            background-color: rgb(12, 22, 45, 0.8);
+            padding-left: 20px;
+            /* padding-top: 20px; */
+
+        }
+
+        .main .resultbox p {
+            color: white;
+            line-height: 28px;
+        }
+
+
+        .main .box .submit {
+            float: left;
+            margin-top: 30px;
+            margin-left: 150px;
+            height: 40px;
+            width: 250px;
+            border: 0.5px solid rgb(98, 117, 151);
+            border-radius: 5px 5px 5px 5px;
+            background-color: transparent;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+
+        }
+
+        .main .box .submit:hover {
+            border: 2px solid rgb(118, 62, 198);
+        }
+
+        /* .main .bottom {
+            position: absolute;
+            top: 780px;
+            bottom: 200px;
+            left: 280px;
+            width: 650px;
+
+        }
+
+        .main .bottom p {
+            color: rgb(91, 109, 142);
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            line-height: 20px;
+        } */
+
+        .main .bottom {
+            position: absolute;
+            top: 890px;
+            bottom: 200px;
+            left: 540px;
+            width: 650px;
+
+        }
+
+        .main .bottom p {
+            color: rgb(91, 109, 142);
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            line-height: 20px;
+            /* color: rgb(0, 255, 0); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainbody">
+        <div class="main">
+            <canvas id="stars"></canvas>
+            <div class="toplogo">
+                {% load static %}
+                <img src="{% static 'images/logo2.png' %}">
+            </div>
+            <div class="box">
+                <div class="welcome">
+                    <p class="top">
+                        分析结束！
+                    </p>
+                    <p class="top">
+                        结果如下：
+                    </p>
+                </div>
+                <div class="resultbox" id="resultbox">
+                    <!-- {{context}} -->
+                </div>
+                <!-- href是文件路径，download为文件名字 -->
+                <!-- {% load static %}
+                <img src="{% static 'images/logo2.png' %}"> -->
+                {% load static %}
+                <a href="{% static '分析结果.zip' %}" download="分析报告"><button class="submit">Download</button></a>
+
+            </div>
+            <div class="bottom">
+                <p>
+                    知识产权归CAT3团队
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var starCount = 1500;
+    var starArr = new Array();
+
+    var Star = function () {
+        this.x = windowWidth * Math.random();
+        this.y = 5000 * Math.random();
+        this.text = ".";
+        this.color = "white";
+        this.randomColor = function () {
+            var _r = Math.random();
+            if (_r < 0.5) {
+                this.color = "#333";
+            } else {
+                this.color = "white";
+            }
+        }
+    }
+
+    window.onload = function () {
+        var starsE = document.getElementById("stars");
+        windowWidth = window.innerWidth;
+        starsE.width = windowWidth;
+        starsE.height = 1.2 * window.innerHeight;
+        context = starsE.getContext("2d");
+
+        for (var i = 0; i < starCount; i++) {
+            var star = new Star();
+            star.randomColor();
+            starArr.push(star);
+        }
+
+        showStars();
+    }
+
+    function showStars() {
+        for (var n = 0; n < starCount; n++) {
+            starArr[n].randomColor();
+            context.fillStyle = starArr[n].color;
+            context.fillText(starArr[n].text, starArr[n].x, starArr[n].y);
+        }
+
+        setTimeout("showStars()", 100);
+    }
+
+
+    //展示结果
+    // var my_dict = {
+    //     "id": 123,
+    //     "name": "John Doe",
+    //     "context": ['[&#x27;========差分分析=======&#x27;, &#x27;1轮，最少活跃S盒个数为1&#x27;, &#x27;2轮，最少活跃S盒个数为1&#x27;, &#x27;3轮，最少活跃S盒个数为2&#x27;, &#x27;到达指定轮数，运行到第3轮，最少S盒个数为2&#x27;, &#x27;========线性分析=======&#x27;, &#x27;1轮，最少活跃S盒个数为0&#x27;, &#x27;2轮，最少活跃S盒个数为1&#x27;, &#x27;3轮，最少活跃S盒个数为2&#x27;, &#x27;到达指定轮数，运行到第3轮，最少S盒个数为2&#x27;]']
+
+    // };
+    var anayalse_result = "{{context}}"
+    // var anayalse_result = my_dict["context"]
+    // anayalse_result= '[&#x27;========差分分析=======&#x27;, &#x27;1轮，最少活跃S盒个数为1&#x27;, &#x27;2轮，最少活跃S盒个数为1&#x27;, &#x27;3轮，最少活跃S盒个数为2&#x27;, &#x27;到达指定轮数，运行到第3轮，最少S盒个数为2&#x27;, &#x27;========线性分析=======&#x27;, &#x27;1轮，最少活跃S盒个数为0&#x27;, &#x27;2轮，最少活跃S盒个数为1&#x27;, &#x27;3轮，最少活跃S盒个数为2&#x27;, &#x27;到达指定轮数，运行到第3轮，最少S盒个数为2&#x27;]'
+    // console.log(anayalse_result)
+    // alert(typeof(anayalse_result))
+    var div = document.getElementById("resultbox");
+
+    // var p = document.createElement("p");
+    // var text = document.createTextNode(anayalse_result);
+    // p.appendChild(text);
+    // div.appendChild(p);
+    anayalse_result = anayalse_result.split("&#x27;")
+
+  
+    for (var i = 0; i < anayalse_result.length; i++) {
+        console.log(anayalse_result[i])
+        if(anayalse_result[i] != ', ' && anayalse_result[i] != '['&& anayalse_result[i] != ']'){
+            var p = document.createElement("p");
+            var text = document.createTextNode(anayalse_result[i]);
+            p.appendChild(text);
+            div.appendChild(p);
+            }
+        
+    }
+
+</script>
+
+</html>

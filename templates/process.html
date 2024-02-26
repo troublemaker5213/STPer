@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+            /* user-select: none; */
+            text-decoration: none;
+            color: #000;
+        }
+        
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .mainbody {
+            width: 100%;
+        }
+
+        .main {
+            position: relative;
+            width: 1260px;
+            height: 640px;
+            margin: 0 auto;
+            background-color: rgb(4, 13, 33);
+            overflow: hidden;
+            background: url(/static/images/2.jpg) no-repeat scroll top center rgb(3, 24, 43);
+            /* background-position: -50px -150px; */
+            background-size: 1260px 700px;
+            background-attachment: fixed;
+            /* opacity:0.2;   */
+            /* height: 200px; */
+        }
+
+        
+       
+        /* .main {
+            position: relative;
+            width: 1260px;
+            height: 600px;
+            margin: 0 auto;
+            background-color: rgb(4, 13, 33);
+
+            background: url(/static/images/2.jpg) no-repeat scroll top center rgb(3, 24, 43);
+            background-size: 1260px 700px;
+            background-attachment: fixed;
+        } */
+
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        #loader {
+            /* display: flex; */
+            margin-top: -400px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #loader .spinner {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border-top: 3px solid white;
+            border-right: 3px solid transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        #loader p {
+            margin-top: 20px;
+            font-weight: bold;
+            color: white;
+            font-size: 30px;
+            letter-spacing: 5px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainbody">
+        <div class="main">
+            <canvas id="stars"></canvas>
+
+            <div id="loader">
+                <div class="spinner"></div>
+                <p>正在分析，请稍后 ...</p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+
+<script>
+    var starCount = 1500;
+    var starArr = new Array();
+
+    var Star = function () {
+        this.x = windowWidth * Math.random();
+        this.y = 5000 * Math.random();
+        this.text = ".";
+        this.color = "white";
+        this.randomColor = function () {
+            var _r = Math.random();
+            if (_r < 0.5) {
+                this.color = "#333";
+            } else {
+                this.color = "white";
+            }
+        }
+    }
+
+    window.onload = function () {
+        var starsE = document.getElementById("stars");
+        windowWidth = window.innerWidth;
+        starsE.width = windowWidth;
+        starsE.height = 0.98 * window.innerHeight;
+        context = starsE.getContext("2d");
+
+        for (var i = 0; i < starCount; i++) {
+            var star = new Star();
+            star.randomColor();
+            starArr.push(star);
+        }
+
+        showStars();
+    }
+
+    function showStars() {
+        for (var n = 0; n < starCount; n++) {
+            starArr[n].randomColor();
+            context.fillStyle = starArr[n].color;
+            context.fillText(starArr[n].text, starArr[n].x, starArr[n].y);
+        }
+
+        setTimeout("showStars()", 100);
+    }
+
+
+
+    // in progress page
+    function submitForm() {
+        // alert("?")
+        var formData = JSON.parse(sessionStorage.getItem('form_data'));
+        console.log(formData)
+        if (!formData) {
+            // if no form data is available, redirect back to homepage
+            window.location.href = '/';
+            return;
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'result/');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            // handle response from server
+        };
+        xhr.send(JSON.stringify(formData));
+    }
+    setTimeout(submitForm(),2000);
+
+</script>
+
+</html>
